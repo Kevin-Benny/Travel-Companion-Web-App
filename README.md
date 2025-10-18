@@ -123,11 +123,11 @@ Each destination card is divided into two halves:
 
 ## Installation & Usage
 
-### Local Development
+### Quick Start
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/Travel-Companion-Web-App.git
+git clone https://github.com/Kevin-Benny/Travel-Companion-Web-App.git
 cd Travel-Companion-Web-App
 ```
 
@@ -144,42 +144,25 @@ start index.html  # Windows
 
 3. Access the app at `http://localhost:8000` (if using a local server)
 
-### GitHub Pages Deployment
+### Live Demo
 
-1. **Initialize Git Repository** (if not already done):
-```bash
-git init
-git add .
-git commit -m "Initial commit: Travel Companion Web App"
-```
+**Repository:** https://github.com/Kevin-Benny/Travel-Companion-Web-App
 
-2. **Create GitHub Repository:**
-   - Go to [GitHub](https://github.com)
-   - Click "New Repository"
-   - Name it `Travel-Companion-Web-App`
-   - Don't initialize with README (we already have one)
-
-3. **Push to GitHub:**
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/Travel-Companion-Web-App.git
-git branch -M main
-git push -u origin main
-```
-
-4. **Enable GitHub Pages:**
-   - Go to your repository on GitHub
-   - Click `Settings` → `Pages`
-   - Under "Source", select `main` branch
-   - Click `Save`
-   - Your site will be published at: `https://YOUR_USERNAME.github.io/Travel-Companion-Web-App/`
+To enable GitHub Pages for live deployment:
+1. Go to repository Settings → Pages
+2. Select `main` branch as source
+3. Save and access at: `https://kevin-benny.github.io/Travel-Companion-Web-App/`
 
 ## Project Structure
 
 ```
 Travel-Companion-Web-App/
+├── .claude/
+│   └── README.md       # Technical documentation
+├── .gitignore          # Git ignore rules
 ├── index.html          # Main HTML structure
 ├── styles.css          # Responsive CSS styling
-├── script.js           # JavaScript functionality
+├── script.js           # JavaScript functionality with pre-populated data
 └── README.md           # Project documentation
 ```
 
@@ -235,14 +218,31 @@ This is a personal project, but suggestions and improvements are welcome. Feel f
 
 This project is open source and available under the MIT License.
 
+## Getting Started
+
+The app comes pre-populated with your complete USA trip itinerary including:
+- 4 major destinations (Great Smoky Mountains, NYC, Niagara Falls, Washington D.C.)
+- All hotel booking details with confirmation numbers
+- Suggested to-do lists for each location
+- Detailed daily itinerary notes
+- Useful resource links
+
+Simply open the app and start using it - all data persists locally in your browser!
+
+## Deployment Status
+
+✅ Repository created and pushed to GitHub
+✅ All files committed with complete travel data
+⏳ GitHub Pages (optional) - Enable in repository Settings → Pages
+
 ## Author
 
-Created for personal USA travel organization and planning.
+Created for personal USA travel organization and planning (October 19 - November 6, 2025).
 
 ## Support
 
-For issues or questions, please open an issue on GitHub.
+For issues or questions, please open an issue on the [GitHub repository](https://github.com/Kevin-Benny/Travel-Companion-Web-App/issues).
 
 ---
 
-**Happy Travels!** ✈️
+**Happy Travels!** 🗺️ ✈️ 🧳
