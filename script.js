@@ -833,6 +833,75 @@ function removeItemFromBag(bagId, itemIdx) {
 }
 
 // ===================================
+// Export/Import Functions
+// ===================================
+function exportData() {
+    const dataToExport = {
+        destinations: state.destinations,
+        expenses: state.expenses,
+        bags: state.bags,
+        exportDate: new Date().toISOString()
+    };
+
+    const dataStr = JSON.stringify(dataToExport, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(dataBlob);
+    link.download = `travel-companion-backup-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+
+    URL.revokeObjectURL(link.href);
+}
+
+function importData() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+
+    input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const importedData = JSON.parse(event.target.result);
+
+                // Validate the data structure
+                if (!importedData.destinations || !importedData.expenses || !importedData.bags) {
+                    alert('Invalid data file. Please select a valid Travel Companion backup file.');
+                    return;
+                }
+
+                // Confirm before overwriting
+                if (confirm('This will replace all your current data. Are you sure you want to continue?')) {
+                    state.destinations = importedData.destinations;
+                    state.expenses = importedData.expenses;
+                    state.bags = importedData.bags;
+
+                    saveToLocalStorage();
+
+                    // Re-render all sections
+                    renderDestinations();
+                    renderExpenses();
+                    renderBags();
+
+                    alert('Data imported successfully!');
+                }
+            } catch (error) {
+                alert('Error reading file. Please make sure it\'s a valid JSON file.');
+                console.error('Import error:', error);
+            }
+        };
+
+        reader.readAsText(file);
+    };
+
+    input.click();
+}
+
+// ===================================
 // Event Listeners
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -857,6 +926,10 @@ document.addEventListener('DOMContentLoaded', () => {
             addItemToBag(bagId);
         });
     });
+
+    // Export/Import buttons
+    document.getElementById('exportDataBtn').addEventListener('click', exportData);
+    document.getElementById('importDataBtn').addEventListener('click', importData);
 });
 
 // Make functions globally accessible
