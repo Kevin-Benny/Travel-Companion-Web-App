@@ -350,6 +350,7 @@ function renderDestinations() {
                                     <input type="checkbox" ${todo.completed ? 'checked' : ''}
                                            onchange="toggleTodo('${dest.id}', ${idx})">
                                     <span>${todo.text}</span>
+                                    <button class="delete-todo-btn" onclick="deleteTodo('${dest.id}', ${idx})" title="Delete to-do">×</button>
                                 </li>
                             `).join('')}
                         </ul>
@@ -370,6 +371,7 @@ function renderDestinations() {
                             ${dest.journal.links.map((link, idx) => `
                                 <li class="link-item">
                                     <a href="${link.url}" target="_blank" rel="noopener">${link.title}</a>
+                                    <button class="delete-link-btn" onclick="deleteLink('${dest.id}', ${idx})" title="Delete link">×</button>
                                 </li>
                             `).join('')}
                         </ul>
@@ -391,6 +393,15 @@ function toggleTodo(destId, todoIdx) {
     const dest = state.destinations.find(d => d.id === destId);
     if (dest) {
         dest.journal.todos[todoIdx].completed = !dest.journal.todos[todoIdx].completed;
+        saveToLocalStorage();
+        renderDestinations();
+    }
+}
+
+function deleteTodo(destId, todoIdx) {
+    const dest = state.destinations.find(d => d.id === destId);
+    if (dest && confirm('Delete this to-do item?')) {
+        dest.journal.todos.splice(todoIdx, 1);
         saveToLocalStorage();
         renderDestinations();
     }
@@ -485,6 +496,15 @@ function addLink(destId) {
         renderDestinations();
         closeModal();
     });
+}
+
+function deleteLink(destId, linkIdx) {
+    const dest = state.destinations.find(d => d.id === destId);
+    if (dest && confirm('Delete this link?')) {
+        dest.journal.links.splice(linkIdx, 1);
+        saveToLocalStorage();
+        renderDestinations();
+    }
 }
 
 function showAddDestinationModal() {
@@ -841,9 +861,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Make functions globally accessible
 window.toggleTodo = toggleTodo;
+window.deleteTodo = deleteTodo;
 window.addTodoItem = addTodoItem;
 window.editNotes = editNotes;
 window.addLink = addLink;
+window.deleteLink = deleteLink;
 window.editDestination = editDestination;
 window.deleteDestination = deleteDestination;
 window.deleteExpense = deleteExpense;
