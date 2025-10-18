@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Travel Companion - Organize your USA travel itinerary, hotels, and journal">
+    <title>Travel Companion - USA Journey Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>🗺️ Travel Companion</h1>
+            <p class="tagline">USA Journey: October 19 - November 6, 2025</p>
+            <button id="addDestinationBtn" class="btn btn-primary">+ Add Destination</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section id="destinationsSection" class="destinations-section">
+                <!-- Destination cards will be dynamically inserted here -->
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <!-- Expense Tracker Section -->
+            <section class="expense-tracker">
+                <div class="section-header">
+                    <h2>💰 Expense Tracker</h2>
+                    <button id="addExpenseBtn" class="btn btn-secondary">+ Add Expense</button>
+                </div>
+                <div class="expense-summary">
+                    <div class="total-expense">
+                        <span>Total Expenses:</span>
+                        <span id="totalExpense" class="amount">$0.00</span>
+                    </div>
+                </div>
+                <div id="expenseList" class="expense-list">
+                    <!-- Expenses will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- Item Map Section -->
+            <section class="item-map">
+                <h2>🧳 Luggage Item Map</h2>
+                <div class="bags-container">
+                    <!-- Check-in Bags -->
+                    <div class="bag-section">
+                        <h3>Check-in Bags</h3>
+                        <div class="bags-grid">
+                            <div class="bag-card" data-bag-id="checkin-1">
+                                <div class="bag-header">
+                                    <h4>Check-in Bag 1</h4>
+                                    <button class="btn btn-small add-item-btn" data-bag="checkin-1">+ Add Item</button>
+                                </div>
+                                <ul class="item-list" id="checkin-1-items">
+                                    <!-- Items will be dynamically inserted here -->
+                                </ul>
+                            </div>
+                            <div class="bag-card" data-bag-id="checkin-2">
+                                <div class="bag-header">
+                                    <h4>Check-in Bag 2</h4>
+                                    <button class="btn btn-small add-item-btn" data-bag="checkin-2">+ Add Item</button>
+                                </div>
+                                <ul class="item-list" id="checkin-2-items">
+                                    <!-- Items will be dynamically inserted here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cabin Bags -->
+                    <div class="bag-section">
+                        <h3>Cabin Bags</h3>
+                        <div class="bags-grid">
+                            <div class="bag-card" data-bag-id="cabin-1">
+                                <div class="bag-header">
+                                    <h4>Cabin Bag 1</h4>
+                                    <button class="btn btn-small add-item-btn" data-bag="cabin-1">+ Add Item</button>
+                                </div>
+                                <ul class="item-list" id="cabin-1-items">
+                                    <!-- Items will be dynamically inserted here -->
+                                </ul>
+                            </div>
+                            <div class="bag-card" data-bag-id="cabin-2">
+                                <div class="bag-header">
+                                    <h4>Cabin Bag 2</h4>
+                                    <button class="btn btn-small add-item-btn" data-bag="cabin-2">+ Add Item</button>
+                                </div>
+                                <ul class="item-list" id="cabin-2-items">
+                                    <!-- Items will be dynamically inserted here -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Travel Companion. Safe travels! ✈️</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals will be injected by JavaScript -->
+    <div id="modalContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
