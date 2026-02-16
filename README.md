@@ -146,7 +146,7 @@ start index.html  # Windows
 
 ### Live Demo
 
-**Repository:** https://github.com/Kevin-Benny/Travel-Companion-Web-App
+**Repository:** [Click here for demo](https://kevin-benny.github.io/Travel-Companion-Web-App/)
 
 To enable GitHub Pages for live deployment:
 1. Go to repository Settings → Pages
